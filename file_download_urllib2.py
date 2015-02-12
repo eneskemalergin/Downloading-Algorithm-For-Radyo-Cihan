@@ -10,12 +10,25 @@
 def download(base_url, program_name, topic_name, file_name, file_number, extension = ".mp3"):
         from urllib2 import Request, urlopen, URLError, HTTPError
 	import os
-	# Upgrade it: if there is no directory exists create one and cont...
-	# directory_location =  "C:\Users\Pc-41\Desktop\H.E\ " + program_name + "\ "+ topic_name
-        directory_location = "C:\Users\Pc-41\downloads\Sorular ve Cevaplar"
-
-        os.chdir(directory_location)
+	# Checks the first path of a directory.
+        base_path = "C:/Users/Pc-41/Desktop"
+        directory_one  = base_path + '/' + program_name  
+        if not os.path.exists(directory_one):
+            os.makedirs(directory_one)
+            print("New directory created...")
+        else:
+            print("You already have specified directory...")
         
+        # Checkst the second level path of a directory.
+        directory_two = directory_one + '/' + topic_name 
+        if not os.path.exists(directory_two):
+            os.makedirs(directory_two)
+            print("New directory created...")
+            return(directory_two)
+        else:
+            print("You already have specidied directory...")                 
+            return(directory_two) 
+                        
         
 	url = base_url + "%252F" + program_name + "%252F" + topic_name + "%252F" + file_name + file_number + extension
 	# Makes the request.
@@ -59,15 +72,4 @@ print "All done!"
 # Adding zero
 str(3).zfill(2)
 
-# Precise numbering
-
-#Example URL:
-#    http://www.radyocihan.com/download/mp3/%252Fuploads%252Faudio%252Fsorular-ve-cevaplar%252Fbirlestirilmis-s-c%252Fsorular-ve-cevaplar-41.mp3
-
-# Example URL:
-#    http://www.radyocihan.com/download/mp3/%252Fuploads%252Faudio%252Fminberden-yukselen-ses
-#     %252Fmys-ahlaki-mulahazalar%252Fahlaki-mulahazalar-izmir-bornova-01.mp3
-# base_url = 'http://www.radyocihan.com/download/mp3/%252Fuploads%252Faudio'
-# file_name =  str(index) + ".mp3"
-# download(file_name,"b",base_url)
 
