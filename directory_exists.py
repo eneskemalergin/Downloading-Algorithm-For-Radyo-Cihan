@@ -1,14 +1,14 @@
 ## Function for checking and creating folders.
 ## Version 0.2.1
   ## - Parameters:
-  ##    * base_url
+  ##    * base_path
   ##    * topic_name
   ##    * program_name
   ## It creates a folders with topic_name, and program_name
-def directory_exist_V2(base_url, program_name, topic_name):
+def directory_exist_V2(base_path, program_name, topic_name):
     import os
     # Checks the first path of a directory.
-    directory_one  = base_url + '/' + program_name  
+    directory_one  = base_path + '/' + program_name  
     if not os.path.exists(directory_one):
         os.makedirs(directory_one)
         print("New directory created...")
@@ -24,3 +24,5 @@ def directory_exist_V2(base_url, program_name, topic_name):
     else:
         print("You already have specidied directory...")                 
         return(directory_two) 
+        
+# I need to combine this with the main project...
